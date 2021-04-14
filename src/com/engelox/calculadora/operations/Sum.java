@@ -2,7 +2,7 @@ package com.engelox.calculadora.operations;
 
 public class Sum extends Algebra {
 
-	Sum(double operand1, double operand2) {
+	public Sum(double operand1, double operand2) {
 		super(operand1, operand2);
 	}
 	

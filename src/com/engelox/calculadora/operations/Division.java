@@ -2,7 +2,7 @@ package com.engelox.calculadora.operations;
 
 public class Division extends Algebra{
 
-	Division(double operand1, double operand2) {
+	public Division(double operand1, double operand2) {
 		super(operand1, operand2);
 	}
 
