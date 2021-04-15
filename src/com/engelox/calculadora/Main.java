@@ -6,14 +6,15 @@ public class Main {
 
 		int opcao = 0;
 		Menu menu = new Menu();
+		App app = new App();
 
 		do {
-			opcao = menu.greetings();
-			menu.execute(opcao);
+			opcao = menu.getOperation();
+			app.execute(opcao);
 
 		} while (opcao != 0);
 
 		menu.close();
-
+		app.close();
 	}
 }
