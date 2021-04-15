@@ -15,7 +15,7 @@ public class App {
 
 		String[] operations = { new String("exit"), new String("sum"), new String("subtraction"),
 				new String("multiplication"), new String("division"), new String("sin"), new String("cos"),
-				new String("vol"), new String("area") };
+				new String("area"), new String("vol") };
 
 		switch (operations[option]) {
 
@@ -26,7 +26,6 @@ public class App {
 
 		case "subtraction":
 			double[] subtractionInput = multipleInputsReader();
-
 			System.out.println("Total: " + this.handler.subtraction(subtractionInput));
 			break;
 
@@ -34,28 +33,24 @@ public class App {
 
 			double[] multiplicationInput = multipleInputsReader();
 			System.out.println("Total: " + this.handler.multiplication(multiplicationInput));
-
 			break;
 
 		case "division":
 
 			double[] divisionInput = multipleInputsReader();
 			System.out.println("Total: " + this.handler.division(divisionInput));
-
 			break;
 
 		case "sin":
 			System.out.println("Informe o angulo: ");
 			double sinAngle = Double.parseDouble(this.input.nextLine());
 			System.out.println("Total: " + Calculadora.calcular(new Sin(sinAngle)));
-
 			break;
 
 		case "cos":
 			System.out.println("Informe o angulo: ");
 			double cosAngle = Double.parseDouble(this.input.nextLine());
 			System.out.println("Total: " + Calculadora.calcular(new Cosine(cosAngle)));
-
 			break;
 
 		case "vol":
@@ -70,21 +65,27 @@ public class App {
 			System.out.println("Total: " + Calculadora.calcular(new Circle(area)));
 			break;
 		}
-
 	}
 
 	private double[] multipleInputsReader() {
-		int numberOfInputs;
-		System.out.println("Informe a quantidade de numeros: ");
-		numberOfInputs = Integer.parseInt(this.input.nextLine());
+		try {
 
-		double[] entries = new double[numberOfInputs];
+			int numberOfInputs;
+			System.out.println("Informe a quantidade de numeros: ");
+			numberOfInputs = Integer.parseInt(this.input.nextLine());
 
-		for (int i = 0; i < numberOfInputs; i++) {
-			System.out.println("Informe o " + (i + 1) + "º numero:");
-			entries[i] = Double.parseDouble(this.input.nextLine());
+			double[] entries = new double[numberOfInputs];
+
+			for (int i = 0; i < numberOfInputs; i++) {
+				System.out.println("Informe o " + (i + 1) + "º numero:");
+				entries[i] = Double.parseDouble(this.input.nextLine());
+			}
+			return entries;
+		} catch (NumberFormatException e) {
+			System.out.println("Por favor, use apenas numeros!");
+			Main.main(null);
+			return new double[0];
 		}
-		return entries;
 	}
 
 	public void close() {

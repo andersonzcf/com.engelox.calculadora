@@ -1,6 +1,6 @@
 package com.engelox.calculadora.operations;
 
-public class Subtraction extends Algebra{
+public class Subtraction extends Algebra {
 
 	public Subtraction(double operand1, double operand2) {
 		super(operand1, operand2);
@@ -8,8 +8,7 @@ public class Subtraction extends Algebra{
 
 	@Override
 	public double execute() {
-		return operand1 - operand2;
+		return this.getOperandOne() - this.getOperandTwo();
 	}
 
-	
 }

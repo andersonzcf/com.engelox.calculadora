@@ -2,8 +2,6 @@ package com.engelox.calculadora;
 
 import java.util.Scanner;
 
-// TODO: handle invalid input
-
 public class Menu {
 	private Scanner input = new Scanner(System.in);
 

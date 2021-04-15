@@ -1,6 +1,6 @@
 package com.engelox.calculadora.operations;
 
-public class Division extends Algebra{
+public class Division extends Algebra {
 
 	public Division(double operand1, double operand2) {
 		super(operand1, operand2);
@@ -8,8 +8,8 @@ public class Division extends Algebra{
 
 	@Override
 	public double execute() {
-		if (operand1 != 0) {
-			return operand1 / operand2;
+		if (this.getOperandOne() != 0) {
+			return this.getOperandOne() / this.getOperandTwo();
 		}
 		return 0;
 	}
