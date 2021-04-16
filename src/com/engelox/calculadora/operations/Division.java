@@ -8,10 +8,11 @@ public class Division extends Algebra {
 
 	@Override
 	public double execute() {
-		if (this.getOperandOne() != 0) {
-			return this.getOperandOne() / this.getOperandTwo();
+		if (operand2 != 0) {
+			return operand1/ operand2;
 		}
-		return 0;
+		System.err.println("Divisao por zero!");
+		return -1;
 	}
 
 }

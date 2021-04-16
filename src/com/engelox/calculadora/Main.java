@@ -10,7 +10,9 @@ public class Main {
 
 		do {
 			opcao = menu.getOperation();
-			app.execute(opcao);
+			if(opcao >= 0) {
+				app.execute(opcao);
+			}			
 
 		} while (opcao != 0);
 

@@ -8,7 +8,7 @@ public class Subtraction extends Algebra {
 
 	@Override
 	public double execute() {
-		return this.getOperandOne() - this.getOperandTwo();
+		return operand1 - operand2;
 	}
 
 }

@@ -2,79 +2,89 @@ package com.engelox.calculadora;
 
 import java.util.Scanner;
 
+import javax.management.OperationsException;
+
 import com.engelox.calculadora.operations.Circle;
 import com.engelox.calculadora.operations.Cosine;
+import com.engelox.calculadora.operations.Operation;
 import com.engelox.calculadora.operations.Sin;
 import com.engelox.calculadora.operations.Sphere;
 
 public class App {
-	private MultipleInputsHandler handler = new MultipleInputsHandler();
+	CalculadoraHandler handler = new CalculadoraHandler();
 	private Scanner input = new Scanner(System.in);
+	String[] operations = { new String("exit"), new String("sum"), new String("subtraction"),
+			new String("multiplication"), new String("division"), new String("sin"), new String("cos"),
+			new String("area"), new String("vol") };
+	
+	String[] message = {"Informe o angulo: ", "Informe o raio: "};
 
 	public void execute(int option) {
-
-		String[] operations = { new String("exit"), new String("sum"), new String("subtraction"),
-				new String("multiplication"), new String("division"), new String("sin"), new String("cos"),
-				new String("area"), new String("vol") };
-
+		double result = 0;
+		
 		switch (operations[option]) {
+			case "sum":
+				result = handler.process(multipleInputsReader(), operations[option]);
+				break;
+	
+			case "subtraction":
+				result = handler.process(multipleInputsReader(), operations[option]);
+				break;
+	
+			case "multiplication":
+				result = handler.process(multipleInputsReader(), operations[option]);
+				break;
+	
+			case "division":
+				result = handler.process(multipleInputsReader(), operations[option]);
+				if(result == -1) {
+					return;
+				}
+				break;
+	
+			case "sin":
+				result = handler.process(singleInputReader(message[0]), operations[option]);
+				break;
+	
+			case "cos":
+				result = handler.process(singleInputReader(message[0]), operations[option]);
+				break;
+	
+			case "vol":
+				result = handler.process(singleInputReader(message[1]), operations[option]);
+				break;
+	
+			case "area":
+				result = handler.process(singleInputReader(message[1]), operations[option]);
+				break;
+			}
+		
+		System.out.printf("Total: %.2f\n",result);
+	}
 
-		case "sum":
-			double[] sumInput = multipleInputsReader();
-			System.out.println("Total: " + this.handler.sum(sumInput));
-			break;
-
-		case "subtraction":
-			double[] subtractionInput = multipleInputsReader();
-			System.out.println("Total: " + this.handler.subtraction(subtractionInput));
-			break;
-
-		case "multiplication":
-
-			double[] multiplicationInput = multipleInputsReader();
-			System.out.println("Total: " + this.handler.multiplication(multiplicationInput));
-			break;
-
-		case "division":
-
-			double[] divisionInput = multipleInputsReader();
-			System.out.println("Total: " + this.handler.division(divisionInput));
-			break;
-
-		case "sin":
-			System.out.println("Informe o angulo: ");
-			double sinAngle = Double.parseDouble(this.input.nextLine());
-			System.out.println("Total: " + Calculadora.calcular(new Sin(sinAngle)));
-			break;
-
-		case "cos":
-			System.out.println("Informe o angulo: ");
-			double cosAngle = Double.parseDouble(this.input.nextLine());
-			System.out.println("Total: " + Calculadora.calcular(new Cosine(cosAngle)));
-			break;
-
-		case "vol":
-			System.out.println("Informe o raio: ");
-			double vol = Double.parseDouble(this.input.nextLine());
-			System.out.println("Total: " + Calculadora.calcular(new Sphere(vol)));
-			break;
-
-		case "area":
-			System.out.println("Informe o raio: ");
-			double area = Double.parseDouble(this.input.nextLine());
-			System.out.println("Total: " + Calculadora.calcular(new Circle(area)));
-			break;
-		}
+	
+	private double singleInputReader(String message) {
+		System.out.println(message);
+		double sinAngle = Double.parseDouble(this.input.nextLine());
+		return sinAngle;
 	}
 
 	private double[] multipleInputsReader() {
 		try {
-
 			int numberOfInputs;
+			while (true) {
+			
 			System.out.println("Informe a quantidade de numeros: ");
-			numberOfInputs = Integer.parseInt(this.input.nextLine());
-
+				numberOfInputs = Integer.parseInt(this.input.nextLine());
+				if (numberOfInputs > 0) {
+					break;
+				}
+				else {
+					System.err.println("Quandtidade invalida. Digite novamente");
+				}
+			}
 			double[] entries = new double[numberOfInputs];
+			
 
 			for (int i = 0; i < numberOfInputs; i++) {
 				System.out.println("Informe o " + (i + 1) + "º numero:");

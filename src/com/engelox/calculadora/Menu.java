@@ -12,9 +12,15 @@ public class Menu {
 		System.out.println("1 - Soma \n2 - Subtracao\n3 - Multiplicacao\n4 - Divisao\n5 - "
 				+ "Funcao Seno\n6 - Funcao Cosseno\n7 - Calcular area de um circulo"
 				+ "\n8 - Calcular o volume de uma esfera" + "\n0 - Sair");
-		int option = Integer.parseInt(input.nextLine());
+		try {
+			int option = Integer.parseInt(input.nextLine());
 
-		return option;
+			return option;
+		} catch (Exception e) {
+			System.err.println("Operacao invalida");
+			return -1;
+		}
+
 	}
 
 	public void close() {
