@@ -15,42 +15,32 @@ import com.engelox.calculadora.operations.Sum;
 
 public class CalculadoraHandler {
 	Operation operation;
-
-	private double arrayHandler(double[] data, String operation) {
-		double output = data[0];
-		for (int i = 1; i < data.length; i++) {
-			operationHandler(operation, output, data[i]);
-			output = Calculadora.calcular(this.operation);
-		}
-
-		return output;
-	}
 	
-	public double process(double value, String operation) {
-		operationHandler(operation, value);
+	public double process(double value, CalculadoraFunction function) {
+		operationHandler(value, function);
 		return Calculadora.calcular(this.operation);
 		
 	}
 	
-	public double process(double[]values, String operation) {
-		return arrayHandler(values, operation);		
+	public double process(double[]values, CalculadoraFunction function) {
+		return arrayHandler(values, function);		
 	}
 
-	private void operationHandler(String operation, double value) {		
-		switch (operation) {
-		case "sin":
+	private void operationHandler(double value, CalculadoraFunction function) {		
+		switch (function) {
+		case SIN:
 			this.operation = new Sin(value);
 			break;
 
-		case "cos":
+		case COS:
 			this.operation = new Cosine(value);
 			break;
 
-		case "vol":
+		case SPHERE:
 			this.operation = new Sphere(value);
 			break;
 
-		case "area":
+		case CIRCLE:
 			this.operation = new Circle(value);
 			break;
 		}
@@ -58,25 +48,35 @@ public class CalculadoraHandler {
 	}	
 	
 	
-	private void operationHandler(String operation, double value1, double value2) {
-		switch (operation) {
+	private void operationHandler(double value1, double value2, CalculadoraFunction function) {
+		switch (function) {
 
-		case "sum":
+		case SUM:
 			this.operation = new Sum(value1, value2);
 			break;
 
-		case "subtraction":
+		case SUBTRACTION:
 			this.operation = new Subtraction(value1, value2);
 			break;
 
-		case "multiplication":
+		case MULTIPLCATION:
 			this.operation = new Multiplication(value1, value2);
 			break;
 
-		case "division":
+		case DIVISION:
 			this.operation = new Division(value1, value2);
 			break;
 		}
+	}
+	
+	private double arrayHandler(double[] data, CalculadoraFunction function) {
+		double output = data[0];
+		for (int i = 1; i < data.length; i++) {
+			operationHandler(output, data[i], function);
+			output = Calculadora.calcular(this.operation);
+		}
+
+		return output;
 	}
 
 }

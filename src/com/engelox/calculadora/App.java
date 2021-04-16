@@ -3,6 +3,7 @@ package com.engelox.calculadora;
 import java.util.Scanner;
 
 import javax.management.OperationsException;
+import javax.net.ssl.HandshakeCompletedListener;
 
 import com.engelox.calculadora.operations.Circle;
 import com.engelox.calculadora.operations.Cosine;
@@ -13,58 +14,36 @@ import com.engelox.calculadora.operations.Sphere;
 public class App {
 	CalculadoraHandler handler = new CalculadoraHandler();
 	private Scanner input = new Scanner(System.in);
-	String[] operations = { new String("exit"), new String("sum"), new String("subtraction"),
-			new String("multiplication"), new String("division"), new String("sin"), new String("cos"),
-			new String("area"), new String("vol") };
+	CalculadoraFunction[] functions = {
+			CalculadoraFunction.SUM, CalculadoraFunction.SUBTRACTION,
+			CalculadoraFunction.MULTIPLCATION, CalculadoraFunction.DIVISION,
+			CalculadoraFunction.SIN, CalculadoraFunction.COS,
+			CalculadoraFunction.CIRCLE, CalculadoraFunction.SPHERE 
+			
+	};
 	
-	String[] message = {"Informe o angulo: ", "Informe o raio: "};
+	
 
 	public void execute(int option) {
-		double result = 0;
+		double RESULT;
+		CalculadoraFunction function = this.functions[option -1];
 		
-		switch (operations[option]) {
-			case "sum":
-				result = handler.process(multipleInputsReader(), operations[option]);
-				break;
-	
-			case "subtraction":
-				result = handler.process(multipleInputsReader(), operations[option]);
-				break;
-	
-			case "multiplication":
-				result = handler.process(multipleInputsReader(), operations[option]);
-				break;
-	
-			case "division":
-				result = handler.process(multipleInputsReader(), operations[option]);
-				if(result == -1) {
-					return;
-				}
-				break;
-	
-			case "sin":
-				result = handler.process(singleInputReader(message[0]), operations[option]);
-				break;
-	
-			case "cos":
-				result = handler.process(singleInputReader(message[0]), operations[option]);
-				break;
-	
-			case "vol":
-				result = handler.process(singleInputReader(message[1]), operations[option]);
-				break;
-	
-			case "area":
-				result = handler.process(singleInputReader(message[1]), operations[option]);
-				break;
-			}
+		if(function.isMultipleInput()) {
+			double[] input = multipleInputsReader();
+			RESULT = handler.process(input, function);
+		} else {
+			double input = function == CalculadoraFunction.SIN || function == CalculadoraFunction.COS ? 
+					singleInputReader(0) : singleInputReader(1);
+			RESULT = handler.process(input, function);
+		}
 		
-		System.out.printf("Total: %.2f\n",result);
+		System.out.printf("Total: %.2f\n",RESULT);
 	}
 
 	
-	private double singleInputReader(String message) {
-		System.out.println(message);
+	private double singleInputReader(int messageOption) {
+		String[] message = {"Informe o angulo: ", "Informe o raio: "};
+		System.out.println(message[messageOption]);
 		double sinAngle = Double.parseDouble(this.input.nextLine());
 		return sinAngle;
 	}
