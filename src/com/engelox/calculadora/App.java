@@ -2,15 +2,6 @@ package com.engelox.calculadora;
 
 import java.util.Scanner;
 
-import javax.management.OperationsException;
-import javax.net.ssl.HandshakeCompletedListener;
-
-import com.engelox.calculadora.operations.Circle;
-import com.engelox.calculadora.operations.Cosine;
-import com.engelox.calculadora.operations.Operation;
-import com.engelox.calculadora.operations.Sin;
-import com.engelox.calculadora.operations.Sphere;
-
 public class App {
 	CalculadoraHandler handler = new CalculadoraHandler();
 	private Scanner input = new Scanner(System.in);

@@ -1,8 +1,5 @@
 package com.engelox.calculadora;
 
-import java.util.Scanner;
-
-import com.engelox.calculadora.operations.Algebra;
 import com.engelox.calculadora.operations.Circle;
 import com.engelox.calculadora.operations.Cosine;
 import com.engelox.calculadora.operations.Division;
