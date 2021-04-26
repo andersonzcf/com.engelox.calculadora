@@ -35,8 +35,8 @@ public class App {
 	private double singleInputReader(int messageOption) {
 		String[] message = {"Informe o angulo: ", "Informe o raio: "};
 		System.out.println(message[messageOption]);
-		double sinAngle = Double.parseDouble(this.input.nextLine());
-		return sinAngle;
+		double angle = Double.parseDouble(this.input.nextLine());
+		return angle;
 	}
 
 	private double[] multipleInputsReader() {
