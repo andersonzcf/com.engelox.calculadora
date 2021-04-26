@@ -13,9 +13,8 @@ public class Menu {
 				+ "Funcao Seno\n6 - Funcao Cosseno\n7 - Calcular area de um circulo"
 				+ "\n8 - Calcular o volume de uma esfera" + "\n0 - Sair");
 		try {
-			int option = Integer.parseInt(input.nextLine());
+			return Integer.parseInt(input.nextLine());
 
-			return option;
 		} catch (Exception e) {
 			System.err.println("Operacao invalida");
 			return -1;
