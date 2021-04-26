@@ -10,20 +10,20 @@ import com.engelox.calculadora.operations.Sphere;
 import com.engelox.calculadora.operations.Subtraction;
 import com.engelox.calculadora.operations.Sum;
 
-public class CalculadoraHandler {
+public class CalculatorHandler {
 	Operation operation;
 	
-	public double process(double value, CalculadoraFunction function) {
+	public double process(double value, CalculatorFunction function) {
 		operationHandler(value, function);
-		return Calculadora.calcular(this.operation);
+		return Calculator.calculate(this.operation);
 		
 	}
 	
-	public double process(double[]values, CalculadoraFunction function) {
+	public double process(double[]values, CalculatorFunction function) {
 		return arrayHandler(values, function);		
 	}
 
-	private void operationHandler(double value, CalculadoraFunction function) {		
+	private void operationHandler(double value, CalculatorFunction function) {		
 		switch (function) {
 		case SIN:
 			this.operation = new Sin(value);
@@ -45,7 +45,7 @@ public class CalculadoraHandler {
 	}	
 	
 	
-	private void operationHandler(double value1, double value2, CalculadoraFunction function) {
+	private void operationHandler(double value1, double value2, CalculatorFunction function) {
 		switch (function) {
 
 		case SUM:
@@ -66,11 +66,11 @@ public class CalculadoraHandler {
 		}
 	}
 	
-	private double arrayHandler(double[] data, CalculadoraFunction function) {
+	private double arrayHandler(double[] data, CalculatorFunction function) {
 		double output = data[0];
 		for (int i = 1; i < data.length; i++) {
 			operationHandler(output, data[i], function);
-			output = Calculadora.calcular(this.operation);
+			output = Calculator.calculate(this.operation);
 		}
 
 		return output;

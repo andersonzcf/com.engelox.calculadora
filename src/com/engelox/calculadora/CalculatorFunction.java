@@ -1,6 +1,6 @@
 package com.engelox.calculadora;
 
-public enum CalculadoraFunction {
+public enum CalculatorFunction {
 	SUM(true),
 	SUBTRACTION(true),
 	DIVISION(true),
@@ -12,7 +12,7 @@ public enum CalculadoraFunction {
 	
 	private boolean multipleInput;
 	
-	CalculadoraFunction (boolean multipleInput) {
+	CalculatorFunction (boolean multipleInput) {
 		this.multipleInput = multipleInput;
 	}
 	

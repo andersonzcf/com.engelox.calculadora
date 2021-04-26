@@ -3,13 +3,13 @@ package com.engelox.calculadora;
 import java.util.Scanner;
 
 public class App {
-	CalculadoraHandler handler = new CalculadoraHandler();
+	CalculatorHandler handler = new CalculatorHandler();
 	private Scanner input = new Scanner(System.in);
-	CalculadoraFunction[] functions = {
-			CalculadoraFunction.SUM, CalculadoraFunction.SUBTRACTION,
-			CalculadoraFunction.MULTIPLCATION, CalculadoraFunction.DIVISION,
-			CalculadoraFunction.SIN, CalculadoraFunction.COS,
-			CalculadoraFunction.CIRCLE, CalculadoraFunction.SPHERE 
+	CalculatorFunction[] functions = {
+			CalculatorFunction.SUM, CalculatorFunction.SUBTRACTION,
+			CalculatorFunction.MULTIPLCATION, CalculatorFunction.DIVISION,
+			CalculatorFunction.SIN, CalculatorFunction.COS,
+			CalculatorFunction.CIRCLE, CalculatorFunction.SPHERE 
 			
 	};
 	
@@ -17,13 +17,13 @@ public class App {
 
 	public void execute(int option) {
 		double RESULT;
-		CalculadoraFunction function = this.functions[option -1];
+		CalculatorFunction function = this.functions[option -1];
 		
 		if(function.isMultipleInput()) {
 			double[] input = multipleInputsReader();
 			RESULT = handler.process(input, function);
 		} else {
-			double input = function == CalculadoraFunction.SIN || function == CalculadoraFunction.COS ? 
+			double input = function == CalculatorFunction.SIN || function == CalculatorFunction.COS ? 
 					singleInputReader(0) : singleInputReader(1);
 			RESULT = handler.process(input, function);
 		}

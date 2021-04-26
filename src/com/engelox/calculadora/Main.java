@@ -4,17 +4,17 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		int opcao = 0;
+		int option = 0;
 		Menu menu = new Menu();
 		App app = new App();
 
 		do {
-			opcao = menu.getOperation();
-			if(opcao >= 0) {
-				app.execute(opcao);
-			}			
+			option = menu.getOperation();
+			if (option >= 0) {
+				app.execute(option);
+			}
 
-		} while (opcao != 0);
+		} while (option != 0);
 
 		menu.close();
 		app.close();
