@@ -16,7 +16,7 @@ public class App {
 	
 
 	public void execute(int option) {
-		double RESULT;
+		final double RESULT;
 		CalculatorFunction function = this.functions[option -1];
 		
 		if(function.isMultipleInput()) {
