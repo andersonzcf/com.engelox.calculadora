@@ -48,7 +48,7 @@ public class App {
 			double[] entries = new double[numberOfInputs];
 
 			for (int i = 0; i < numberOfInputs; i++) {
-				System.out.println("Informe o " + (i + 1) + "Ã‚Âº numero:");
+				System.out.println("Informe o " + (i + 1) + "� numero:");
 				entries[i] = Double.parseDouble(this.input.nextLine());
 			}
 			return entries;
