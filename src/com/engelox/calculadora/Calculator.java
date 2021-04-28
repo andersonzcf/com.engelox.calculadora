@@ -2,8 +2,8 @@ package com.engelox.calculadora;
 
 import com.engelox.calculadora.operations.Operation;
 
-public interface Calculator {
-	public static double calculate(Operation operation) {
+public class Calculator {
+	public double calculate(Operation operation) {
 		return operation.execute();
 	}
 }
