@@ -54,7 +54,7 @@ public class App {
 			return entries;
 		} catch (NumberFormatException e) {
 			System.out.println("Por favor, use apenas numeros!");
-			Main.main(null);
+			Main.main(new String[0]);
 			return new double[0];
 		}
 	}
