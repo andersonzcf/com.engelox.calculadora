@@ -4,19 +4,26 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		int option = 0;
 		Menu menu = new Menu();
 		App app = new App();
 
-		do {
-			option = menu.getOperation();
-			if (option >= 0) {
-				app.execute(option);
-			}
+		try {
+			int option = 0;
 
-		} while (option != 0);
+			do {
+				option = menu.getOperation();
+				if (option >= 0) {
+					app.execute(option);
+				}
 
-		menu.close();
-		app.close();
+			} while (option != 0);
+
+		} catch (Exception e) {
+			System.out.println("Erro: " + e.getMessage());
+		} finally {
+
+			menu.close();
+			app.close();
+		}
 	}
 }
