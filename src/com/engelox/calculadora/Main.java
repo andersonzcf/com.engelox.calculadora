@@ -11,7 +11,7 @@ public class Main {
 
       do {
         option = menu.getOperation();
-        if (option >= 0) {
+        if (option > 0) {
           app.execute(option);
         }
       } while (option != 0);
