@@ -11,12 +11,25 @@ import com.engelox.calculadora.operations.Subtraction;
 import com.engelox.calculadora.operations.Sum;
 
 public class CalculatorHandler {
+<<<<<<< Updated upstream
 	Operation operation;
 	
 	public double process(double value, CalculatorFunction function) {
 		operationHandler(value, function);
 		return Calculator.calculate(this.operation);
 		
+=======
+	private Operation operation;
+	private Calculator calculator;
+
+	CalculatorHandler() {
+		calculator = new Calculator();
+	}
+
+	public double process(double value, CalculatorFunction function) {
+		operationHandler(value, function);
+		return calculator.calculate(this.operation);
+>>>>>>> Stashed changes
 	}
 	
 	public double process(double[]values, CalculatorFunction function) {
@@ -70,7 +83,7 @@ public class CalculatorHandler {
 		double output = data[0];
 		for (int i = 1; i < data.length; i++) {
 			operationHandler(output, data[i], function);
-			output = Calculator.calculate(this.operation);
+			output = calculator.calculate(this.operation);
 		}
 
 		return output;
