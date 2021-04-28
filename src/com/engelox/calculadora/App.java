@@ -42,7 +42,7 @@ public class App {
 				if (numberOfInputs > 0) {
 					break;
 				} else {
-					System.err.println("Quandtidade invalida. Digite novamente");
+					System.err.println("Quantidade invalida. Digite novamente");
 				}
 			}
 			double[] entries = new double[numberOfInputs];
@@ -61,5 +61,6 @@ public class App {
 
 	public void close() {
 		this.input.close();
+		System.out.println("Calculadora finalizada com sucesso.");
 	}
 }
