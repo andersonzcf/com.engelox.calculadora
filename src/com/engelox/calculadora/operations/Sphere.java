@@ -1,14 +1,10 @@
 package com.engelox.calculadora.operations;
 
-public class Sphere extends Geometry {
-
-	public Sphere(double radius) {
-		super(radius);
-	}
+public class Sphere implements SingleInputOperation {
 
 	@Override
-	public double execute() {
-		return (4 * Math.PI * radius * radius * radius) / 3;
+	public double execute(double operand) {
+		return (4 * Math.PI * Math.pow(operand, 3)) / 3;
 	}
 
 }

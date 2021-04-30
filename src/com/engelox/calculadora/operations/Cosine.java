@@ -1,14 +1,10 @@
 package com.engelox.calculadora.operations;
 
-public class Cosine extends Trigonometry {
-
-	public Cosine(double angle) {
-		super(angle);
-	}
+public class Cosine implements SingleInputOperation {
 
 	@Override
-	public double execute() {
-		return Math.cos(Math.toRadians(angle));
+	public double execute(double operand) {
+		return Math.cos(Math.toRadians(operand));
 	}
 
 }
