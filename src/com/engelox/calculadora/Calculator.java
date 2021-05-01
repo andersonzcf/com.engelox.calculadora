@@ -54,4 +54,7 @@ public class Calculator {
 		}
 	}
 
+	public Operation getOperation() {
+		return operation;
+	}
 }

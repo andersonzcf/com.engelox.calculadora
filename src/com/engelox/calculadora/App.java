@@ -15,7 +15,7 @@ public class App {
 		CalculatorFunction function = this.functions[option - 1];
 		Calculator calculator = new Calculator(function);
 
-		if (calculator instanceof SingleInputOperation) {
+		if (calculator.getOperation() instanceof SingleInputOperation) {
 			double input = singleInputReader();
 			RESULT = calculator.calculate(input);
 		} else {
